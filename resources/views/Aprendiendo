@@ -1,0 +1,22 @@
+//con esto podemos poner un logeo obligatorio a la ruta
+//pero no es seguro por q los datos no viajan po https 
+Route::get('/', function () {
+    return view('welcome');
+})->middleware('auth.basic');
+
+
+//CON -h PODEMOS ver que comandos nos proporciona el comando
+	php artisan -h make:auth
+//--views /para que solo nos genere las vistas y no las rutas
+//--force para que sobrescriba las vistas en cado de ya tenerlas creadas
+
+//Para ver los cambion en git
+	$git status
+//se ve que modifico routes/web
+	$ git diff routes/web.php
+
+//Para ver las rutas creadas por el comando 
+	php artisan route:list      o sino      php artisan r:l
+
+//Para buscar una metodo en SUBLIME 
+	ctrol+P    busco con @metodo
