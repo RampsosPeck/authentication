@@ -75,6 +75,16 @@
                             </li>
                         @endif
                     </ul>
+                @if (session()->has('impersonator_id'))
+                    
+                    <form class="navbar-form pull-right" method="POST" action="{{ route('impersonations.destroy') }} "> 
+                   
+                        {{ csrf_field() }}  {{ method_field('DELETE') }}   
+                        <button type="submit" class="btn btn-danger">Dejar de personificar</button>
+                            
+                    </form>
+                
+                @endif
                 </div>
             </div>
         </nav>

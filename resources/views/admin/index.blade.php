@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-
+@if (session()->has('flash'))
+   <div class="alert alert-success">{{ session('flash') }} </div>
+@endif
 <div class="row">
 	<div class="col-md-2">
 		
@@ -25,7 +27,19 @@
 					     		<td>{{ $user->id }}</td>
 					     		<td>{{ $user->name }}</td>
 					     		<td>{{ $user->email }}</td>
-					     		<td>Acciones</td>
+					     		<td>
+					     			<!--(auth()->user()->canImpersonate() && auth()->id() !== $user->id )-->
+					     			
+					     			<!-- (auth()->user()->canImpersonate($user->id))-->
+					     			
+					     			@canImpersonate($user->id)
+					     				<form method="POST" action="{{ route('impersonations.store') }}" >
+					     					{{ csrf_field() }}
+					     					<input type="hidden" name="user_id" value="{{ $user->id }}" >
+					     					<button class="btn btn-info btn-xs">Personificar</button>
+					     				</form>
+					     			@endcanImpersonate
+					     		</td>
 					     	</tr>
 					     @endforeach
 					</tbody>

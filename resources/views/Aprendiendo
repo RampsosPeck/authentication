@@ -20,3 +20,14 @@ Route::get('/', function () {
 
 //Para buscar una metodo en SUBLIME 
 	ctrol+P    busco con @metodo
+
+//Asi se crea nueve usuarios con tinker
+	factory('App\User',9)->create()
+
+
+
+	
+
+
+
+
